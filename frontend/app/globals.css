@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --board-bg: #f1f5f9; /* Slate-100 */
+  --header-bg: #ffffff;
+  --column-bg: #e2e8f0; /* Slate-200 */
+  --text-primary: #0f172a; /* Slate-900 */
+  --text-secondary: #475569; /* Slate-600 */
+  --task-card: #ffffff;
+  --task-card-hover: #f8fafc;
+  --task-card-border: #cbd5e1;
+  --task-count: #64748b;
+}
+
+.dark {
+  --board-bg: #0f1419;
+  --header-bg: #1a1f2e;
+  --column-bg: #2a2f38;
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --task-card: #374151;
+  --task-card-hover: #4b5563;
+  --task-card-border: #3f4654;
+  --task-count: #6b7280;
+}
+
+@theme {
+  --color-board-bg: var(--board-bg);
+  --color-header-bg: var(--header-bg);
+  --color-column-bg: var(--column-bg);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-task-card: var(--task-card);
+  --color-task-card-hover: var(--task-card-hover);
+  --color-task-card-border: var(--task-card-border);
+  --color-task-count: var(--task-count);
+}
+
+* {
+  transition: 
+              background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              /* color 0.4s cubic-bezier(0.4, 0, 0.2, 1),  */
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* NOT background-position - let that be controlled by animations */
+}
+
+body {
+  background-color: var(--board-bg);
+  color: var(--text-primary);
+  font-family: "Gilroy", var(--font-poppins), var(--font-roboto), var(--font-oxanium), sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-text {
+  background: linear-gradient(
+    to right,
+    #3b82f6,
+    #8b5cf6,
+    #ec4899,
+    #ef4444,
+    #f59e0b,
+    #3b82f6
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient-x 3s linear infinite;
+  display: inline-block;
+  white-space: nowrap;
+  /* Remove ALL transitions that might interfere */
+  transition: none !important;
+  /* Ensure animation plays */
+  will-change: background-position;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
