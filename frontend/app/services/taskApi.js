@@ -1,5 +1,11 @@
-const BASE_URL = "http://localhost:5000/api/tasks";
-const AUTH_URL = "http://localhost:5000/api/auth";
+const getBaseUrl = () => {
+  const envUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (!envUrl) return "http://localhost:5000/api";
+  return envUrl.endsWith('/') ? envUrl.slice(0, -1) : envUrl;
+};
+
+const BASE_URL = `${getBaseUrl()}/tasks`;
+
 const getAuthHeader = () => {
   if (typeof window !== "undefined") {
     const token = localStorage.getItem("token");
