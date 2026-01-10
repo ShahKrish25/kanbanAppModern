@@ -1,16 +1,19 @@
 "use client";
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { loginUser } from '../../services/authApi';
 import { useAuth } from '../../context/authContext';
 import ThemeToggle from '../../components/ThemeToggle';
+import { Suspense } from 'react';
 
-const Login = () => {
+const LoginContent = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const isExpired = searchParams.get('expired') === 'true';
     const { login } = useAuth();
 
     useEffect(() => {
@@ -45,6 +48,12 @@ const Login = () => {
             <form className="space-y-6" onSubmit={handleSubmit}>
                 <h2 className="text-3xl font-bold text-text-primary text-center mb-8">Login</h2>
                 
+                {isExpired && !error && (
+                    <div className="bg-amber-500/10 border border-amber-500 text-amber-500 p-3 rounded-lg text-sm text-center mb-4">
+                        Your session has expired. Please login again.
+                    </div>
+                )}
+
                 {error && (
                     <div className="bg-red-500/10 border border-red-500 text-red-500 p-3 rounded-lg text-sm text-center">
                         {error}
@@ -94,5 +103,17 @@ const Login = () => {
     </div>
   )
 }
+
+const Login = () => {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-board-bg flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    }>
+      <LoginContent />
+    </Suspense>
+  );
+};
 
 export default Login;
