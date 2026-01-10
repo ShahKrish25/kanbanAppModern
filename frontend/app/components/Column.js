@@ -8,7 +8,7 @@ const Column = ({ title, tasks, onDelete, onUpdate, loading }) => {
         <div
           ref={provided.innerRef}
           {...provided.droppableProps}
-          className="flex-1 bg-column-bg rounded-xl shadow p-4 h-[calc(100vh-22rem)] overflow-y-auto no-scrollbar transition-all duration-500 animate-fade-in hover:shadow-md border border-transparent hover:border-task-card-border/30"
+          className="flex-1 bg-column-bg/40 backdrop-blur-md rounded-xl shadow p-4 h-[calc(100vh-22rem)] overflow-y-auto no-scrollbar transition-all duration-500 animate-fade-in hover:shadow-md border border-transparent hover:border-task-card-border/30"
         > 
           <div className="flex justify-between items-center mx-2 relative">
             <h2 className="text-xl font-semibold mb-4 text-text-primary">{title}</h2>

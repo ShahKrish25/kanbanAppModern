@@ -82,13 +82,13 @@ const KanbanBoard = () => {
   };
 
   return (
-    <div className="p-6 bg-board-bg max-h-screen rounded-xl shadow transition-all duration-300 animate-fade-in">
+    <div className="p-6 max-h-screen rounded-xl shadow transition-all duration-300 animate-fade-in">
       {isModalOpen ? (
         <div className="animate-scale-in">
           <TaskForm onAdd={handleAddTask} onClose={() => setIsModalOpen(false)} />
         </div>
       ) : (
-        <div className="flex justify-between items-center px-3 my-3 py-3 bg-header-bg rounded-xl border border-task-card-border shadow-sm animate-slide-in">
+        <div className="flex justify-between items-center px-3 my-3 py-3 bg-transparent rounded-xl border border-task-card-border shadow-sm animate-slide-in">
           <h2 className="text-2xl font-bold text-text-primary">
             {user?.name ? (
               <>

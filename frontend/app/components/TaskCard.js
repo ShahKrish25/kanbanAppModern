@@ -48,7 +48,7 @@ const TaskCard = ({ task, onDelete, onUpdate, index }) => {
     <>
     <Draggable draggableId={task._id} index={index}>
       {(provided) => (
-      <div className={`relative bg-task-card border-task-card-border border p-4 rounded-lg mb-3 shadow-sm hover:shadow-md hover:-translate-y-1 hover:bg-task-card-hover transition-all duration-300 animate-scale-in ${isEditing ? 'min-h-fit' : 'min-h-[80px]'}`}  
+      <div className={`relative bg-task-card/60 backdrop-blur-sm border-task-card-border border p-4 rounded-lg mb-3 shadow-sm hover:shadow-md hover:-translate-y-1 hover:bg-task-card-hover/80 transition-all duration-300 animate-scale-in ${isEditing ? 'min-h-fit' : 'min-h-[80px]'}`}  
         ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}>

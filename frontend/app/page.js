@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import KanbanBoard from "./components/KanbanBoard";
 import Navbar from "./components/Navbar";
 import { useAuth } from "./context/authContext";
+import { BeamsBackground } from "./components/ui/beams-background";
 
 const Page = () => {
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -22,16 +23,18 @@ const Page = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-board-bg flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 "></div>
       </div>
     );
   }
 
   return user ? (
-    <div className="p-6 min-h-screen bg-board-bg transition-all duration-200">
+    <BeamsBackground intensity="medium">
+    <div className="p-6 min-h-screen transition-all duration-200">
     <Navbar />
       <KanbanBoard />
     </div>
+    </BeamsBackground>
   ) : null;
 };
 
